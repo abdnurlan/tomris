@@ -32,8 +32,8 @@ export default function Marquee({ reverse = false }: { reverse?: boolean }) {
       modifiers: {
         x: gsap.utils.unitize((val: number) => {
           const mod = reverse
-            ? ((parseFloat(val) % totalWidth) + totalWidth) % totalWidth
-            : ((parseFloat(val) % -totalWidth) - totalWidth) % -totalWidth;
+            ? ((parseFloat(String(val)) % totalWidth) + totalWidth) % totalWidth
+            : ((parseFloat(String(val)) % -totalWidth) - totalWidth) % -totalWidth;
           return mod;
         }),
       },

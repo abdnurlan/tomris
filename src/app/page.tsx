@@ -10,11 +10,12 @@ import {
   useScroll,
   useTransform,
   AnimatePresence,
+  Variants,
 } from "framer-motion";
 import { useRef, useState } from "react";
 
 /* ─── Animation presets ─────────────────────────────────────── */
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 48, filter: "blur(6px)" },
   show: {
     opacity: 1,
@@ -24,12 +25,12 @@ const fadeUp = {
   },
 };
 
-const stagger = {
+const stagger: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const cardVariant = {
+const cardVariant: Variants = {
   hidden: { opacity: 0, y: 56, scale: 0.95 },
   show: {
     opacity: 1,
