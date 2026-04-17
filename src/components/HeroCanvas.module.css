@@ -1,0 +1,83 @@
+.heroContainer {
+  position: relative;
+  height: 250vh; /* Faster Scroll track height so content appears sooner */
+  width: 100vw;
+  background-color: var(--background);
+}
+
+.stickyArea {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--background);
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.logoLayer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s var(--easing-premium), transform 1s var(--easing-premium);
+}
+
+.logoLayer.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.logoImage {
+  max-width: 60vw;
+  max-height: 40vh;
+  object-fit: contain;
+}
+
+.smmText {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #050505; /* Black text on yellow background */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s var(--easing-premium) 0.5s, transform 0.8s var(--easing-premium) 0.5s;
+}
+
+.logoLayer.visible .smmText {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading overlay for the absolute beginning if needed */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  transition: opacity 0.5s;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

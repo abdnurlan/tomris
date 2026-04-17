@@ -1,0 +1,53 @@
+/* ─── Full-screen canvas for particle trail ─────────────────── */
+.trailCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  /* Blend so the trail glows through dark & light sections */
+  mix-blend-mode: screen;
+}
+
+/* ─── Spring-animated outer ring ───────────────────────────── */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245, 242, 66, 0.5);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.25s ease, height 0.25s ease,
+    border-color 0.25s ease, background 0.25s ease;
+}
+
+.cursor.hovering {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(245, 242, 66, 0.9);
+  background: rgba(245, 242, 66, 0.07);
+}
+
+/* ─── Instant center dot ────────────────────────────────────── */
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brand-yellow);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Hide on touch devices ─────────────────────────────────── */
+@media (hover: none) {
+  .trailCanvas,
+  .cursor,
+  .dot {
+    display: none;
+  }
+}

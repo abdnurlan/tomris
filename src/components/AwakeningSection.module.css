@@ -1,0 +1,133 @@
+.section {
+  position: relative;
+  z-index: 10;
+  background-color: var(--brand-yellow);
+  overflow: hidden;
+  padding: clamp(6rem, 14vh, 12rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+/* Decorative ambient orb */
+.orb {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: clamp(300px, 50vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .inner {
+    flex-direction: row;
+    gap: 5rem;
+    align-items: flex-start;
+  }
+
+  .left {
+    flex: 1.1;
+    position: sticky;
+    top: 100px;
+  }
+
+  .right {
+    flex: 1;
+    padding-top: 1rem;
+  }
+}
+
+/* ─── Eyebrow ───────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Headline with 3D word slots ───────────────────────────── */
+.headline {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--background);
+  perspective: 800px;
+  /* allow individual word 3D transforms */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em 0.3em;
+}
+
+/* Each word lives in an overflow-hidden slot so clipping is clean */
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  /* vertical clip so words don't bleed into adjacent rows */
+  padding-bottom: 0.06em;
+}
+
+.word {
+  display: inline-block;
+  transform-style: preserve-3d;
+  /* GSAP controls animation, initial hidden state set in JS */
+}
+
+/* ─── Body copy ─────────────────────────────────────────────── */
+.copy {
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.68);
+  margin-bottom: 3rem;
+}
+
+/* ─── Stats grid ────────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.statItem {
+  padding: 1.4rem 1.2rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.065);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  backdrop-filter: blur(6px);
+}
+
+.statValue {
+  font-family: var(--font-outfit), sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--background);
+  margin-bottom: 0.4rem;
+}
+
+.statLabel {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
